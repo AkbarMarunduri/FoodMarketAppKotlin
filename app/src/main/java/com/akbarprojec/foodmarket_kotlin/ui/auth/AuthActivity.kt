@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
-import androidx.navigation.navOptions
-import androidx.navigation.ui.NavigationUI
 import com.akbarprojec.foodmarket_kotlin.R
 import kotlinx.android.synthetic.main.layout_toolbar.*
 

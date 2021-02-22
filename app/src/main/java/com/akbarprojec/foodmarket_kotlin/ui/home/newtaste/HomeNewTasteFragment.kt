@@ -1,5 +1,6 @@
 package com.akbarprojec.foodmarket_kotlin.ui.home.newtaste
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.akbarprojec.foodmarket_kotlin.R
 import com.akbarprojec.foodmarket_kotlin.model.dummy.HomeVerticalModel
+import com.akbarprojec.foodmarket_kotlin.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.fragment_home_new_taste.*
 
 class HomeNewTasteFragment : Fragment(),HomeNewTasteAdapter.ItemAdapterCallBack {
@@ -40,7 +42,8 @@ class HomeNewTasteFragment : Fragment(),HomeNewTasteAdapter.ItemAdapterCallBack 
     }
 
     override fun onClick(v: View, data: HomeVerticalModel) {
-        TODO("Not yet implemented")
+        val detail = Intent(activity, DetailActivity::class.java)
+        startActivity(detail)
     }
 
 

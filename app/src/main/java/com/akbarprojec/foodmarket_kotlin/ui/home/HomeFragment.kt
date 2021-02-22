@@ -1,5 +1,6 @@
 package com.akbarprojec.foodmarket_kotlin.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.akbarprojec.foodmarket_kotlin.R
 import com.akbarprojec.foodmarket_kotlin.model.dummy.HomeModel
+import com.akbarprojec.foodmarket_kotlin.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), HomeAdapter.ItemAdapterCallBack {
@@ -51,6 +53,7 @@ class HomeFragment : Fragment(), HomeAdapter.ItemAdapterCallBack {
     }
 
     override fun onClick(v: View, data: HomeModel) {
-        Toast.makeText(context, "In Progres ", Toast.LENGTH_LONG).show()
+        val detail = Intent(activity, DetailActivity::class.java)
+        startActivity(detail)
     }
 }

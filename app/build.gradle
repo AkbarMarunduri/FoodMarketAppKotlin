@@ -12,8 +12,8 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions "dev"
     }
 
 
@@ -29,6 +29,13 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    productFlavors{
+        dev{
+            applicationId="com.akbarprojec.foodmarket_kotlin.dev"
+            buildConfigField "String","BASE_URL","\"http://foodmarket-backend.buildwithangga.id/\""
+        }
     }
 }
 
@@ -53,5 +60,14 @@ dependencies {
 
     //glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+
 
 }
