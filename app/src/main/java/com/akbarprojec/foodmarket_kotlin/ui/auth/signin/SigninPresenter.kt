@@ -5,7 +5,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class SiginPresenter(private val view: SignContract.View) : SignContract.Presenter {
+class SigninPresenter(private val view: SignContract.View) : SignContract.Presenter {
     private val aCompositeDisposable: CompositeDisposable?
 
     init {

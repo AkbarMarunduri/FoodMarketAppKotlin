@@ -14,6 +14,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         flavorDimensions "dev"
+        multiDexEnabled true
     }
 
 
@@ -69,7 +70,15 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
 
+    //loading screen lottie
     implementation 'com.airbnb.android:lottie:3.4.4'
 
+    //multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
 
+    //sharepreference
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    //mengambil gambar
+    implementation 'com.github.dhaval2404:imagepicker:1.5'
 }
