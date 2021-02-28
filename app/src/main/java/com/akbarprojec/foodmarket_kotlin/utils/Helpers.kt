@@ -1,41 +1,39 @@
 package com.akbarprojec.foodmarket_kotlin.utils
 
 import android.widget.TextView
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonDeserializer
-import com.google.gson.JsonSerializer
+import com.google.gson.*
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
 object Helpers {
     fun TextView.formatPrice(value: String) {
-        this.text=getCurencyIDR(java.lang.Double.parseDouble(value))
+        this.text = getCurencyIDR(java.lang.Double.parseDouble(value))
     }
 
-    fun getCurencyIDR(price: Double) :String{
-        val format=DecimalFormat("#,###,###")
-        return "IDR"+format.format(price).replace(",".toRegex(),".")
+    fun getCurencyIDR(price: Double): String {
+        val format = DecimalFormat("#,###,###")
+        return "IDR" + format.format(price).replace(",".toRegex(), ".")
     }
 
-    fun getDefaultGson(): GsonBuilder? {
+    fun getDefaultGson(): Gson? {
         return GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
-            .setDateFormat("")
-            .registerTypeAdapter(Date::class.java, JsonDeserializer{json,_,_,->
-                val formatServer = SimpleDateFormat("", Locale.ENGLISH)
-                formatServer.timeZone = TimeZone.getTimeZone("UTC")
-                formatServer.parse(json.asString)
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
+            .registerTypeAdapter(Date::class.java, JsonDeserializer { json, _, _ ->
+                val formatServe = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.ENGLISH)
+                formatServe.timeZone = TimeZone.getTimeZone("UTC")
+                formatServe.parse(json.asString)
             })
-            .registerTypeAdapter(Date::class.java, JsonSerializer<Date>) {src._,_,->
-                val format=SimpleDateFormat("",Locale.ENGLISH)
-                format.timeZone= TimeZone.getTimeZone("UTC")
+            .registerTypeAdapter(Date::class.java, JsonSerializer<Date> { src, _, _ ->
+                val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.ENGLISH)
+                format.timeZone = TimeZone.getTimeZone("UTC")
                 if (src != null) {
-                    format.parse(json.asString)
+                    JsonPrimitive(format.format(src))
                 } else {
                     null
                 }
             }).create()
+
     }
 }

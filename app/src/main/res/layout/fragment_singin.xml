@@ -10,7 +10,7 @@
     android:paddingLeft="24dp"
     android:paddingTop="26dp"
     android:paddingEnd="24dp"
-    tools:context=".ui.auth.singin.SingInFragment">
+    tools:context=".ui.auth.signin.SingInFragment">
 
     <TextView
         style="@style/TextView.PoppinsNormal16sp020202"

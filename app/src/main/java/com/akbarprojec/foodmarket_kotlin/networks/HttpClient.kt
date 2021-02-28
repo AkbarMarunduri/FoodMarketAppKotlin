@@ -50,15 +50,16 @@ class HttpClient {
             builder.addInterceptor(interceptor)
         }
         if (token != null) {
-            builder.addInterceptor(getInteceptorWithHeader("Authorization","Bearer ${token}"))
+            builder.addInterceptor(getInteceptorWithHeader("Authorization", "Bearer ${token}"))
         }
         val okHttpClient=builder.build()
         client=Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL+"api/")
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create(Helpers.getDefaultGson))
+            .addConverterFactory(GsonConverterFactory.create(Helpers.getDefaultGson()))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
+        endpoint=null
     }
 
     private fun getInteceptorWithHeader(headerName: String, headerValue: String): Interceptor {
