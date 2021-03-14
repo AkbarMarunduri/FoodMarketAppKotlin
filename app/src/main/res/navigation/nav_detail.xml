@@ -12,6 +12,11 @@
         <action
             android:id="@+id/action_payment"
             app:destination="@id/fragmentPayment" />
+
+        <argument
+            android:name="data"
+            app:argType="com.akbarprojec.foodmarket_kotlin.model.response.home.Data"
+            app:nullable="true"/>
     </fragment>
 
     <fragment

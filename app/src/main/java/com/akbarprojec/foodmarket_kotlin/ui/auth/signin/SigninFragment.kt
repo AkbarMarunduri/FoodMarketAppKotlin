@@ -32,12 +32,12 @@ class SigninFragment : Fragment(), SignContract.View {
         super.onActivityCreated(savedInstanceState)
         presenter = SigninPresenter(this)
 
-        //periksa apakah token sudah ada / bellum
-        if (!FoodMarket.getApp().getToken().isNullOrEmpty()) {
-            val home = Intent(activity, MainActivity::class.java)
-            startActivity(home)
-            activity?.finish()
-        }
+        //periksa apakah token sudah ada / belum
+//        if (!FoodMarket.getApp().getToken().isNullOrEmpty()) {
+//            val home = Intent(activity, MainActivity::class.java)
+//            startActivity(home)
+//            activity?.finish()
+//        }
 
         initView()
         initDummy()

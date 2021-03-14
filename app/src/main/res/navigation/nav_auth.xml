@@ -28,7 +28,7 @@
         android:name="com.akbarprojec.foodmarket_kotlin.ui.auth.singup.SingUpAddressFragment"
         tools:layout="@layout/fragment_singup_address">
         <action
-            android:id="@+id/accing_singup_succes"
+            android:id="@+id/action_singup_succes"
             app:destination="@+id/SingUpSuccesFragment" />
     </fragment>
 

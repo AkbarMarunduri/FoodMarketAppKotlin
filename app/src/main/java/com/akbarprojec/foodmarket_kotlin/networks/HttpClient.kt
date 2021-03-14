@@ -1,7 +1,10 @@
 package com.akbarprojec.foodmarket_kotlin.networks
 
+import android.util.Log
 import com.akbarprojec.foodmarket_kotlin.BuildConfig
+import com.akbarprojec.foodmarket_kotlin.FoodMarket
 import com.akbarprojec.foodmarket_kotlin.utils.Helpers
+import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,9 +18,11 @@ class HttpClient {
     private var client: Retrofit? = null
     private var endpoint: Endpoint? = null
 
+    //semua companion object jika dijava = static
+    //exp : public static void HttpClient getInstance(){}
     companion object {
         private var minstance: HttpClient = HttpClient()
-
+         //di java -> static HttpClient mintance = new HttpClient()
         @Synchronized
         fun getInstance(): HttpClient {
             return minstance
@@ -36,11 +41,11 @@ class HttpClient {
     }
 
     private fun buildRetrofitClient() {
-        val token = ""
+        val token = FoodMarket.getApp().getToken()
         buildRetrofitClient(token)
     }
 
-    fun buildRetrofitClient(token: String) {
+    fun buildRetrofitClient(token: String?) {
         val builder = OkHttpClient.Builder()
         builder.connectTimeout(2, TimeUnit.MINUTES)
         builder.readTimeout(2, TimeUnit.MINUTES)
@@ -48,10 +53,15 @@ class HttpClient {
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             builder.addInterceptor(interceptor)
+
+            //chuck interceptor
+            builder.addInterceptor(ChuckInterceptor(FoodMarket.getApp()))
         }
+
         if (token != null) {
             builder.addInterceptor(getInteceptorWithHeader("Authorization", "Bearer ${token}"))
         }
+
         val okHttpClient=builder.build()
         client=Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL+"api/")
@@ -60,6 +70,10 @@ class HttpClient {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
         endpoint=null
+
+        //Log.v("tokenRegister", token!!)
+
+
     }
 
     private fun getInteceptorWithHeader(headerName: String, headerValue: String): Interceptor {
@@ -75,7 +89,7 @@ class HttpClient {
             for ((key, value) in headers) {
                 builder.addHeader(key,value)
             }
-            builder.method(original.method(),original.body())
+            builder.method(original.method, original.body)
             it.proceed(builder.build())
         }
     }

@@ -7,12 +7,12 @@ import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
 import com.akbarprojec.foodmarket_kotlin.R
-import com.akbarprojec.foodmarket_kotlin.model.dummy.HomeModel
+import com.akbarprojec.foodmarket_kotlin.model.response.home.Data
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_home_horizontal.view.*
 
 class HomeAdapter(
-    private val listData: List<HomeModel>,
+    private val listData: List<Data>,
     private val itemAdapterCallBack: ItemAdapterCallBack
 ) : RecyclerView.Adapter<HomeAdapter.OrdeViewHolder>() {
 
@@ -32,14 +32,14 @@ class HomeAdapter(
 
     class OrdeViewHolder(Itemview: View) : RecyclerView.ViewHolder(Itemview) {
 
-        fun bind(data: HomeModel, itemAdapterCallBack: ItemAdapterCallBack) {
+        fun bind(data: Data, itemAdapterCallBack: ItemAdapterCallBack) {
             itemView.apply {
-                tvTitle.text = data.title
-                rbFood.rating = data.rating
+                tvTitle.text = data.name
+                rbFood.rating = data.rate?.toFloat()!!
 
-//                Glide.with(context)
-//                    .load(data.src)
-//                    .into(ivPoster)
+                Glide.with(context)
+                    .load(data.picturePath)
+                    .into(ivPoster)
 
                 itemView.setOnClickListener {
                     itemAdapterCallBack.onClick(it, data)
@@ -48,5 +48,5 @@ class HomeAdapter(
         }
     }
 
-    interface ItemAdapterCallBack { fun onClick(v: View, data: HomeModel) }
+    interface ItemAdapterCallBack { fun onClick(v: View, data: Data) }
 }

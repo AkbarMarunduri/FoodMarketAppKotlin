@@ -27,8 +27,7 @@ class SigninPresenter(private val view: SignContract.View) : SignContract.Presen
             }, {
                 view.dismisLoading()
                 view.onLoginFailed(it.message.toString())
-            }
-            )
+            })
         aCompositeDisposable!!.add(disposable)
     }
 

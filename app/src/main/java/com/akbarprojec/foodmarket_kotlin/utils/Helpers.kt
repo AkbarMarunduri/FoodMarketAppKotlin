@@ -8,7 +8,7 @@ import java.util.*
 
 object Helpers {
     fun TextView.formatPrice(value: String) {
-        this.text = getCurencyIDR(java.lang.Double.parseDouble(value))
+        this.text = getCurencyIDR(java.lang.Double.parseDouble(value.toString()))
     }
 
     fun getCurencyIDR(price: Double): String {
