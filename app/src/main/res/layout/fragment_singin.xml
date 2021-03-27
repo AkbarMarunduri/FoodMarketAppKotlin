@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="24dp"
+    android:background="#FFF"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingTop="26dp"
+    android:paddingEnd="24dp"
+    tools:context=".ui.auth.signin.SigninFragment">
+
+    <TextView
+        style="@style/TextView.PoppinsNormal16sp020202"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email Address" />
+
+    <EditText
+        android:id="@+id/edEmail"
+        style="@style/EditText.PoppinsNormal14sp8D92A3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/shape_rectangle_outline_8_020202"
+        android:hint="Type you emil"
+        android:padding="10dp" />
+
+    <TextView
+        style="@style/TextView.PoppinsNormal16sp020202"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password" />
+
+    <EditText
+        android:id="@+id/edPassword"
+        style="@style/EditText.PoppinsNormal14sp8D92A3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/shape_rectangle_outline_8_020202"
+        android:hint="Type  you password"
+        android:inputType="textPassword"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/btSingIn"
+        style="@style/Button.primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/sing_in"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btnSingUp"
+        style="@style/Button.secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/sing_up"
+        android:textAllCaps="false" />
+
+
+</LinearLayout>

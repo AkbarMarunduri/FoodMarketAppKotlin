@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">foodmarket_kotlin</string>
+    <string name="foofmatked">FoofMatked</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sing_up">Sing Up</string>
+    <string name="sing_in">Sing In</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_order">Oder</string>
+    <string name="title_profile">Profile</string>
+</resources>

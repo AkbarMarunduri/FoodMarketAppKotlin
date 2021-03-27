@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_auth"
+    app:startDestination="@id/FragmentSingIn">
+
+    <fragment
+        android:id="@+id/FragmentSingIn"
+        android:name="com.akbarprojec.foodmarket_kotlin.ui.auth.signin.SigninFragment"
+        tools:layout="@layout/fragment_singin">
+        <action
+            android:id="@+id/action_singup"
+            app:destination="@+id/SingUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SingUpFragment"
+        android:name="com.akbarprojec.foodmarket_kotlin.ui.auth.singup.SingUpFragment"
+        tools:layout="@layout/fragment_singup">
+        <action
+            android:id="@+id/action_singup_address"
+            app:destination="@+id/SingUpAddressFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SingUpAddressFragment"
+        android:name="com.akbarprojec.foodmarket_kotlin.ui.auth.singup.SingUpAddressFragment"
+        tools:layout="@layout/fragment_singup_address">
+        <action
+            android:id="@+id/action_singup_succes"
+            app:destination="@+id/SingUpSuccesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SingUpSuccesFragment"
+        android:name="com.akbarprojec.foodmarket_kotlin.ui.auth.singup.SingUpSuccesFragment"
+        tools:layout="@layout/fragment_succes_address">
+
+    </fragment>
+</navigation>
