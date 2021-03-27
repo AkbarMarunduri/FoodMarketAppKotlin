@@ -16,18 +16,18 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-
+        //data extras dari home fragment dikirim ke argument di nav_detail.xml
         intent.extras?.let {
             val navController=Navigation.findNavController(findViewById(R.id.detailHostFragment))
-            val bundle = Bundle()
-            bundle.putParcelable("data", it.get("data") as Parcelable?)
-            navController.setGraph(navController.graph,bundle)
+            val bundlle = Bundle()
+            bundlle.putParcelable("data",it.get("data")as Parcelable?)
+            navController.setGraph(navController.graph,bundlle)
         }
     }
 
     fun toolbarPayment() {
         toolbar.visibility=View.VISIBLE
-        toolbar.title="Paymebt"
+        toolbar.title="Payment"
         toolbar.subtitle="You deverse better meal"
         toolbar.navigationIcon=resources.getDrawable(R.drawable.ic_arrow_back_000,null)
         toolbar.setNavigationOnClickListener{onBackPressed()}

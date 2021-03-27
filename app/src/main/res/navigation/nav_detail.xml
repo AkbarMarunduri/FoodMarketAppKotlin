@@ -15,8 +15,9 @@
 
         <argument
             android:name="data"
+            android:defaultValue="@null"
             app:argType="com.akbarprojec.foodmarket_kotlin.model.response.home.Data"
-            app:nullable="true"/>
+            app:nullable="true" />
     </fragment>
 
     <fragment

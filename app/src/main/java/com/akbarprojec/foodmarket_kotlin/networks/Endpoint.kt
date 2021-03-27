@@ -1,8 +1,10 @@
 package com.akbarprojec.foodmarket_kotlin.networks
 
 import com.akbarprojec.foodmarket_kotlin.model.response.Wrapper
+import com.akbarprojec.foodmarket_kotlin.model.response.checkout.CheckoutResponse
 import com.akbarprojec.foodmarket_kotlin.model.response.home.HomeResponse
 import com.akbarprojec.foodmarket_kotlin.model.response.login.LoginResponse
+import com.akbarprojec.foodmarket_kotlin.model.response.transaction.TransactionResponse
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import retrofit2.http.*
@@ -31,9 +33,22 @@ interface Endpoint {
 
     @Multipart
     @POST("user/photo")
-    fun registerPhoto (@Part profileImage:MultipartBody.Part): Observable<Wrapper<Any>>
+    fun registerPhoto(@Part profileImage: MultipartBody.Part): Observable<Wrapper<Any>>
+
+    @FormUrlEncoded
+    @POST("checkout")
+    fun checkout(
+        @Field("food_id") food_id: String,
+        @Field("user_id") user_id: String,
+        @Field("quantity") quantity: String,
+        @Field("total") total: String,
+        @Field("status") status: String
+    ): Observable<Wrapper<CheckoutResponse>>
 
 
     @GET("food")
     fun home(): Observable<Wrapper<HomeResponse>>
+
+    @GET("transaction")
+    fun transaction(): Observable<Wrapper<TransactionResponse>>
 }

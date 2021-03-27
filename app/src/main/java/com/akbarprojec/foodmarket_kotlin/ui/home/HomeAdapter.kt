@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.akbarprojec.foodmarket_kotlin.R
 import com.akbarprojec.foodmarket_kotlin.model.response.home.Data
 import com.bumptech.glide.Glide
+
 import kotlinx.android.synthetic.main.item_home_horizontal.view.*
+import kotlinx.android.synthetic.main.item_home_horizontal.view.ivPoster
+import kotlinx.android.synthetic.main.item_home_horizontal.view.tvTitle
 
 class HomeAdapter(
     private val listData: List<Data>,
@@ -33,6 +36,7 @@ class HomeAdapter(
     class OrdeViewHolder(Itemview: View) : RecyclerView.ViewHolder(Itemview) {
 
         fun bind(data: Data, itemAdapterCallBack: ItemAdapterCallBack) {
+
             itemView.apply {
                 tvTitle.text = data.name
                 rbFood.rating = data.rate?.toFloat()!!

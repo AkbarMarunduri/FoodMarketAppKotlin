@@ -43,7 +43,7 @@ class HomeNewTasteAdapter(
             itemView.apply {
                 tvTitle.text = data.name
                 rbFood.rating = data.rate?.toFloat() ?:0f
-                tvHarga.formatPrice(data.price.toString())
+                tvItemPrice.formatPrice(data.price.toString())
 
                 Glide.with(context)
                     .load(data.picturePath)

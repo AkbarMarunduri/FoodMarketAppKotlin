@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv1" />
 
             <TextView
-                android:id="@+id/tvHarga"
+                android:id="@+id/tvPrice"
                 style="@style/TextView.PoppinsNormal14sp8D92A3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 app:layout_goneMarginStart="24dp" />
 
             <TextView
-                android:id="@+id/tvd1"
+                android:id="@+id/tvNameItem"
                 style="@style/TextView.PoppinsNormal14sp8D92A3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Driver"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvd1" />
+                app:layout_constraintTop_toBottomOf="@id/tvNameItem" />
 
             <TextView
                 android:id="@+id/pajak"
@@ -130,7 +130,7 @@
                 app:layout_constraintTop_toBottomOf="@id/pajak" />
 
             <TextView
-                android:id="@+id/tvHarga"
+                android:id="@+id/tvItemPrice"
                 style="@style/TextView.PoppinsNormal14sp020202"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvDetailTransaction" />
 
             <TextView
-                android:id="@+id/tvDriver"
+                android:id="@+id/tvDriverPrice"
                 style="@style/TextView.PoppinsNormal14sp020202"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,21 +149,21 @@
                 android:layout_marginEnd="24dp"
                 android:text="IDR 5000 "
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvHarga" />
+                app:layout_constraintTop_toBottomOf="@id/tvItemPrice" />
 
             <TextView
-                android:id="@+id/tvTax"
+                android:id="@+id/tvTaxPrice"
                 style="@style/TextView.PoppinsNormal14sp020202"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:text="total price "
+                android:text="0%"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvDriver" />
+                app:layout_constraintTop_toBottomOf="@id/tvDriverPrice" />
 
             <TextView
-                android:id="@+id/tvTotal"
+                android:id="@+id/tvTotalPice"
                 style="@style/TextView.PoppinsNormal14sp1ABC9C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
                 android:layout_marginEnd="24dp"
                 android:text="IDR 20.000 "
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTax" />
+                app:layout_constraintTop_toBottomOf="@id/tvTaxPrice" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import com.akbarprojec.foodmarket_kotlin.R
 import com.akbarprojec.foodmarket_kotlin.model.response.home.Data
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_detail.tvTitle
 
 
 class DetailFragment : Fragment() {
+    var bundle: Bundle?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,19 +33,22 @@ class DetailFragment : Fragment() {
 
         (activity as DetailActivity).toolbarDetail()
 
+        //mengambil data yang ada di arguments nav_detail.xml untuk ditampilkan
         arguments?.let {
             DetailFragmentArgs.fromBundle(it).data.let {
                 initView(it)
             }
         }
-        //initView(arguments?.getParcelable("data"))
 
         buttonOrderNow.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_payment)
+            Navigation.findNavController(it).navigate(R.id.action_payment,bundle)
         }
     }
 
     private fun initView(data: Data?) {
+        //menjadikan arguments data kebundle untuk dikirim ke paymentFragment melalui navigation ditombol buttonOrderNow
+        bundle= bundleOf("data" to data)
+
         Glide.with(requireContext())
             .load(data?.picturePath)
             .into(ivPoster)
@@ -52,7 +57,7 @@ class DetailFragment : Fragment() {
         tvDesc.text=data?.description
         tvInggredints.text=data?.ingredients
         if (data != null) {
-            tvHarga.formatPrice(data.price.toString())
+            tvItemPrice.formatPrice(data.price!!.toString())
         }
     }
 

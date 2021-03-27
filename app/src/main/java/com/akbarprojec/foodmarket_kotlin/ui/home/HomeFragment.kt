@@ -45,7 +45,6 @@ class HomeFragment : Fragment(), HomeAdapter.ItemAdapterCallBack, HomeContract.V
         presenter = HomePresenter(this)
         presenter.getHome()
 
-        //initDummy()
         initView();
     }
 
@@ -70,12 +69,6 @@ class HomeFragment : Fragment(), HomeAdapter.ItemAdapterCallBack, HomeContract.V
         }
     }
 
-//    fun initDummy() {
-//        foodlist = ArrayList()
-//        foodlist.add(HomeModel("Makanan Hallal", "", 5F))
-//        foodlist.add(HomeModel("Makanan Haram", "", 1F))
-//        foodlist.add(HomeModel("Makanan Subhat", "", 2F))
-//    }
 
     override fun onClick(v: View, data: Data) {
         val detail = Intent(activity, DetailActivity::class.java).putExtra("data",data)
@@ -102,6 +95,7 @@ class HomeFragment : Fragment(), HomeAdapter.ItemAdapterCallBack, HomeContract.V
         rvList.layoutManager = layoutManeger
         rvList.adapter = adapter
 
+        //setting viewPagger
         val selectionPagerAdapter = SelectionPagerAdapter(childFragmentManager)
         selectionPagerAdapter.setData(newStateList, popularLList, recomendeList)
         viewPager.adapter = selectionPagerAdapter
