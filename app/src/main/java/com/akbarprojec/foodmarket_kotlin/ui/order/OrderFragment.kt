@@ -8,13 +8,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.akbarprojec.foodmarket_kotlin.R
+import com.akbarprojec.foodmarket_kotlin.model.response.transaction.Data
 import com.akbarprojec.foodmarket_kotlin.model.response.transaction.TransactionResponse
 import kotlinx.android.synthetic.main.fragment_order.*
 
-class OrderFragment : Fragment(),OrderContract.View {
+class OrderFragment : Fragment(), OrderContract.View {
     lateinit var presenter: OrderPresenter
-    var progresdialog:Dialog?=null
-
+    var progresdialog: Dialog? = null
+    var inProgresList: ArrayList<Data>? = ArrayList()
+    var inPostOrderList: ArrayList<Data>? = ArrayList()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,14 +31,10 @@ class OrderFragment : Fragment(),OrderContract.View {
         super.onActivityCreated(savedInstanceState)
 
         initView()
-        presenter=OrderPresenter(this)
+        presenter = OrderPresenter(this)
         presenter.getTransaction()
-
-        val orderSelecionadapter=OrderSelectionPagerAdapter(childFragmentManager)
-        viewPager.adapter=orderSelecionadapter
-        tabLayout.setupWithViewPager(viewPager)
     }
-    
+
     fun initView() {
         progresdialog = Dialog(requireContext())
         val dialogLLayout = layoutInflater.inflate(R.layout.dialog_loader, null)
@@ -48,8 +46,31 @@ class OrderFragment : Fragment(),OrderContract.View {
     }
 
     override fun onTransactionSuccess(transactionResponse: TransactionResponse) {
-//        if (transactionResponse.data) {
-//        }
+        if (transactionResponse.data.isNullOrEmpty()) {
+            ll_empty.visibility = View.VISIBLE
+            tabLayout.visibility = View.GONE
+            include_toolbar.visibility = View.GONE
+        } else {
+            for (a in transactionResponse.data.indices) {
+                if (transactionResponse.data[a].status.equals("ON_DELIVERY", true)
+                    || transactionResponse.data[a].status.equals("PENDING", true)
+                ) {
+                    inProgresList?.add(transactionResponse.data[a])
+                } else if (transactionResponse.data[a].status.equals("DELIVERED", true)
+                    || transactionResponse.data[a].status.equals("CANCELLED", true)
+                    || transactionResponse.data[a].status.equals("SUCCESS", true)
+                ) {
+                    inPostOrderList?.add(transactionResponse.data[a])
+                }
+
+                val selectionPagerAdapator=OrderSelectionPagerAdapter(childFragmentManager)
+                selectionPagerAdapator.setData(inProgresList, inPostOrderList)
+                viewPager.adapter=selectionPagerAdapator
+                tabLayout.setupWithViewPager(viewPager)
+            }
+        }
+
+
     }
 
     override fun onTransactionFailed(massage: String) {
@@ -57,7 +78,7 @@ class OrderFragment : Fragment(),OrderContract.View {
     }
 
     override fun showLLoading() {
-       progresdialog?.show()
+        progresdialog?.show()
     }
 
     override fun dismisLoading() {

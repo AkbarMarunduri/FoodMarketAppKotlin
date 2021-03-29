@@ -34,6 +34,11 @@ object Helpers {
                     null
                 }
             }).create()
+    }
 
+    fun Long.converLongToTime(formatTanggall:String) :String{
+        val date=Date(this)
+        val format=SimpleDateFormat(formatTanggall)
+        return format.format(date)
     }
 }

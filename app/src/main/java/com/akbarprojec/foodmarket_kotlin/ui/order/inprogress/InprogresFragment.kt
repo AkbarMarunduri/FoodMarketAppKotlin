@@ -7,15 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.akbarprojec.foodmarket_kotlin.R
-import com.akbarprojec.foodmarket_kotlin.model.dummy.ProfileMenuModel
-import com.akbarprojec.foodmarket_kotlin.ui.profile.ProfileMenuAdapter
-import kotlinx.android.synthetic.main.fragment_profile_account.*
+import com.akbarprojec.foodmarket_kotlin.model.response.transaction.Data
+import kotlinx.android.synthetic.main.fragment_profile_account.rvList
 
-class InprogresFragment : Fragment(),ProfileMenuAdapter.ItemAdapterCallBack {
+class InprogresFragment : Fragment(), InprogressAdapter.ItemAdapterCallBack {
 
-    private var menuArrayList: ArrayList<ProfileMenuModel> = ArrayList()
+    private var adapter: InprogressAdapter? = null
+    private var inProgresList: ArrayList<Data>? = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,25 +26,19 @@ class InprogresFragment : Fragment(),ProfileMenuAdapter.ItemAdapterCallBack {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        inProgresList = arguments?.getParcelableArrayList("data")
 
-        initDataDummy()
-
-        var adapter=ProfileMenuAdapter(menuArrayList,this)
-        var layoutManeger: RecyclerView.LayoutManager = LinearLayoutManager(activity)
-        rvList.layoutManager = layoutManeger
-        rvList.adapter = adapter
-
+        if (!inProgresList.isNullOrEmpty()) {
+            adapter = InprogressAdapter(inProgresList!!, this)
+            val layoutmaneger = LinearLayoutManager(activity)
+            rvList.layoutManager = layoutmaneger
+            rvList.adapter = adapter
+        }
     }
 
-    fun initDataDummy() {
-        menuArrayList = ArrayList()
-        menuArrayList.add(ProfileMenuModel("Edit Profile"))
-        menuArrayList.add(ProfileMenuModel("Home Address"))
-        menuArrayList.add(ProfileMenuModel("Security"))
-        menuArrayList.add(ProfileMenuModel("Payments"))
+    override fun onClick(v: View, data: Data) {
+        Toast.makeText(activity, "Clicked pada data ${data.id}", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onClick(v: View, data: ProfileMenuModel) {
-        Toast.makeText(context, "Ini menu yang kamu Click ${data.title}", Toast.LENGTH_LONG).show()
-    }
+
 }

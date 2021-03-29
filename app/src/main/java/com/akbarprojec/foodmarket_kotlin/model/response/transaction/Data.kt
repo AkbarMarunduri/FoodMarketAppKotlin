@@ -1,18 +1,21 @@
 package com.akbarprojec.foodmarket_kotlin.model.response.transaction
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Data(
     @Expose
     @SerializedName("created_at")
     val createdAt: Long,
     @Expose
     @SerializedName("deleted_at")
-    val deletedAt: Any,
-    @SerializedName("food")
+    val deletedAt: String?,
     @Expose
+    @SerializedName("food")
     val food: Food,
     @Expose
     @SerializedName("food_id")
@@ -41,4 +44,4 @@ data class Data(
     @Expose
     @SerializedName("user_id")
     val userId: Int
-)
+):Parcelable
