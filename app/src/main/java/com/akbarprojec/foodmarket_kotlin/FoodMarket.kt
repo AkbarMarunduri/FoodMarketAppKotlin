@@ -5,7 +5,7 @@ import android.preference.PreferenceManager
 import androidx.multidex.MultiDexApplication
 import com.akbarprojec.foodmarket_kotlin.networks.HttpClient
 
-class FoodMarket:MultiDexApplication() {
+class   FoodMarket:MultiDexApplication() {
     companion object{
         lateinit var instance:FoodMarket
         fun getApp(): FoodMarket {
@@ -17,7 +17,7 @@ class FoodMarket:MultiDexApplication() {
         super.onCreate()
         instance =this
     }
-    fun getPreference(): SharedPreferences {
+    fun getPreference(): SharedPreferences { 
         return PreferenceManager.getDefaultSharedPreferences(this)
     }
 

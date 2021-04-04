@@ -1,6 +1,6 @@
 package com.akbarprojec.foodmarket_kotlin.utils
 
-import android.widget.TextView
+    import android.widget.TextView
 import com.google.gson.*
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat

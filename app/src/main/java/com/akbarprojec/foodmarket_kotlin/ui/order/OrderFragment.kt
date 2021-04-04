@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import com.akbarprojec.foodmarket_kotlin.R
 import com.akbarprojec.foodmarket_kotlin.model.response.transaction.Data
 import com.akbarprojec.foodmarket_kotlin.model.response.transaction.TransactionResponse
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_order.*
+import kotlinx.android.synthetic.main.layout_toolbar.view.*
 
 class OrderFragment : Fragment(), OrderContract.View {
     lateinit var presenter: OrderPresenter
@@ -43,6 +45,9 @@ class OrderFragment : Fragment(), OrderContract.View {
             it.setCancelable(false)
             it.window?.setBackgroundDrawableResource(android.R.color.transparent)
         }
+
+        include_toolbar.toolbar.title = "Your Order"
+        include_toolbar.toolbar.subtitle="wait for best meal"
     }
 
     override fun onTransactionSuccess(transactionResponse: TransactionResponse) {
@@ -63,9 +68,9 @@ class OrderFragment : Fragment(), OrderContract.View {
                     inPostOrderList?.add(transactionResponse.data[a])
                 }
 
-                val selectionPagerAdapator=OrderSelectionPagerAdapter(childFragmentManager)
+                val selectionPagerAdapator = OrderSelectionPagerAdapter(childFragmentManager)
                 selectionPagerAdapator.setData(inProgresList, inPostOrderList)
-                viewPager.adapter=selectionPagerAdapator
+                viewPager.adapter = selectionPagerAdapator
                 tabLayout.setupWithViewPager(viewPager)
             }
         }

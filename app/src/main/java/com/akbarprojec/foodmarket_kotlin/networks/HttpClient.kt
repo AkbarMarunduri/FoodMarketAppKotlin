@@ -1,6 +1,5 @@
 package com.akbarprojec.foodmarket_kotlin.networks
 
-import android.util.Log
 import com.akbarprojec.foodmarket_kotlin.BuildConfig
 import com.akbarprojec.foodmarket_kotlin.FoodMarket
 import com.akbarprojec.foodmarket_kotlin.utils.Helpers
@@ -18,11 +17,8 @@ class HttpClient {
     private var client: Retrofit? = null
     private var endpoint: Endpoint? = null
 
-    //semua companion object jika dijava = static
-    //exp : public static void HttpClient getInstance(){}
     companion object {
         private var minstance: HttpClient = HttpClient()
-         //di java -> static HttpClient mintance = new HttpClient()
         @Synchronized
         fun getInstance(): HttpClient {
             return minstance
